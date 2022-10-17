@@ -10,6 +10,12 @@ import os
 import json
 from typing import Dict, List, Optional, Union, cast
 import requests
+from requests import get
+from bs4 import BeautifulSoup
+import os
+import re
+import env
+import time
 
 from env import github_token, github_username
 
@@ -20,18 +26,40 @@ from env import github_token, github_username
 # TODO: Add your github username to your env.py file under the variable `github_username`
 # TODO: Add more repositories to the `REPOS` list below.
 
-REPOS = [
-    "gocodeup/codeup-setup-script",
-    "gocodeup/movies-application",
-    "torvalds/linux",
-]
-
+# REPOS = [
+#     "gocodeup/codeup-setup-script",
+#     "gocodeup/movies-application",
+#     "torvalds/linux",
+# ]
 headers = {"Authorization": f"token {github_token}", "User-Agent": github_username}
 
-if headers["Authorization"] == "token " or headers["User-Agent"] == "":
-    raise Exception(
-        "You need to follow the instructions marked TODO in this script before trying to use it"
-    )
+def get_repos():
+    base = 'https://github.com/search?p='
+    end = '&q=bitcoin'
+    headers = {"Authorization": f"token {env.github_token}", "User-Agent": env.github_username}
+
+    suffix_list = []
+    for page in range(1,6):
+        page = str(page)
+        response = get(base+page+end, headers=headers)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        for i in range (0,10):
+            suffix = soup.select('a.v-align-middle')[i]['href'][1:0]
+            suffix_list.append(suffix)
+
+    time.sleep(121)
+
+    for page in range(6,11):
+        page = str(page)
+        response = get(base+page+end, headers=headers)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        for i in range (0,10):
+            suffix = soup.select('a.v-align-middle')[i]['href'][1:0]
+            suffix_list.append(suffix)
+            
+    return suffix_list
+
+
 
 
 def github_api_request(url: str) -> Union[List, Dict]:
@@ -104,6 +132,7 @@ def scrape_github_data() -> List[Dict[str, str]]:
     """
     Loop through all of the repos and process them. Returns the processed data.
     """
+    REPOS = get_repos()
     return [process_repo(repo) for repo in REPOS]
 
 
