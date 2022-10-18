@@ -64,7 +64,7 @@ The purpose of this project is to build a model that can predict the main progra
 ## <a name="wrangle"></a>Data Acquisition and Preparation
 
 Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  The data is then 
-into train, validate, and test dataframes in a 60% / 20% / 20% ratio.
+into train and test sets in a 80% / 20% ratio.
 
 
 
