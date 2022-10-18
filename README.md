@@ -32,7 +32,7 @@ The purpose of this project is to build a model that can predict the main progra
 
 ### Project Outline:
 - Acquire, clean, and prepare data from the Github Website using their API and a personal access token
-    - Data was acquired Oct 17, 2022 from the top 150 results from three independent languages (C+, Python, Java) where the readme is in english
+    - Data was acquired Oct 17, 2022 from the top 150 results for three languages (C+, Python, Java) where the readme is in english
 - Split data and perform initial data exploration to determine what features will be usefull for modeling
 - Train multiple classification models and evaluate on train dataset
 - Choose the model with that performs the best and evaluate that single model on the test dataset
