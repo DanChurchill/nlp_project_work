@@ -21,7 +21,7 @@ The purpose of this project is to build a model that can predict the main progra
     
   Goal 1: Generate a list of repositories programatically using web scraping techniques<br>
   Goal 2: Acquire and Explore the natural language data that we have acquired<br>
-  Goal 3: Build a function that will take in the text of a README file, and tries to predict the programming language
+  Goal 3: Create three models to predict language of a repo, and select the best model to use against test data
 
 
 [[Back to top](#top)]
@@ -36,7 +36,6 @@ The purpose of this project is to build a model that can predict the main progra
 - Split data and perform initial data exploration to determine what features will be usefull for modeling
 - Train multiple classification models and evaluate on train dataset
 - Choose the model with that performs the best and evaluate that single model on the test dataset
-- Implement a function that accepts text from a readme file and tries to predict the programming lanquage
 
 [[Back to top](#top)]
 ***
