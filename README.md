@@ -1,4 +1,4 @@
-# PREDICTING PROGRAMMING LANGUAGE BY THE README<a name="top"></a>
+# PREDICTING REPO PROGRAMMING LANGUAGE BY THE README<a name="top"></a>
 ![]()
 
 by: Richard Macken & Dan Churchill
@@ -62,21 +62,7 @@ The purpose of this project is to build a model that can predict the main progra
 
 ## <a name="wrangle"></a>Data Acquisition and Preparation
 
-Data is acquired from the Codeup Database server using an SQL query within the modular function wrangle_zillow located in the wrangle.py file.  This returns 43182 rows and 31 columns split into train, validate, and test dataframes in a 60% / 20% / 20% ratio.
-
-Preparation is performed in the wrangle function prior to splitting consisting of the following:
-
-- Converts the transaction dates to Datetime format, and removes a row with a 2018 property erroneously saved in the 2017 table
-- Converted the fips data to the actual name of the county
-- Removes the leading digits and decimal portion of the census tract
-- Converts nulls to zero where applicable in binary columns
-- Removes rows where unit count is greater than one, since these are likely erroneosly categorized as single-family
-- Deleted rows where a tax delinquency exists, as this could impact the tax values in ways we do not understand
-- Converted year built to age by subtracting the value from current year (2022)
-- Createed binary categorical columns for homes with greater than three bedrooms, and three to five garage parking spaces
-- One-hot encoded county, and bedroom count values
-- Renamed columns for clarity and to streamline programming
-- Rows with outliers are removed
+Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  The data is then split into train, validate, and test dataframes in a 60% / 20% / 20% ratio.
 
 
 
@@ -168,9 +154,9 @@ There were similar observations in garage size and a similar category was create
 
 You will need your own env.py file with database credentials then follow the steps below:
 
-  - Download the wrangle.py, explore.py, modeling.py, and final_report.ipynb files
-  - Download the FIPS, points, scale, and tract JPEGs for visualizations
-  - Add your own env.py file to the directory (user, host, password)
+  - Download the acquire.py, prepare.py, and final_report.ipynb files
+  - Generate a personal access token at https://github.com/settings/tokens 
+  - Add your own env.py file to the directory containing your own 'github_token and 'github_username
   - Run the final_repot.ipynb notebook
 
 [[Back to top](#top)]
