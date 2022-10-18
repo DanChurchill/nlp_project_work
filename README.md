@@ -32,8 +32,9 @@ The purpose of this project is to build a model that can predict the main progra
 
 ### Project Outline:
 - Acquire, clean, and prepare data from the Github Website using their API and a personal access token
+    - Data was aquired from the top 150 results from three independent languages (C+, Python, Java) where the readme is in english
 - Split data and perform initial data exploration to determine what features will be usefull for modeling
-- Train multiple classification models and evaluate on train and validate datasets
+- Train multiple classification models and evaluate on train dataset
 - Choose the model with that performs the best and evaluate that single model on the test dataset
 - Implement a function that accepts text from a readme file and tries to predict the programming lanquage
 
@@ -62,7 +63,8 @@ The purpose of this project is to build a model that can predict the main progra
 
 ## <a name="wrangle"></a>Data Acquisition and Preparation
 
-Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  The data is then split into train, validate, and test dataframes in a 60% / 20% / 20% ratio.
+Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  The data is then 
+into train, validate, and test dataframes in a 60% / 20% / 20% ratio.
 
 
 
