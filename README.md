@@ -1,14 +1,7 @@
-# NLP PROJECT - PREDICTING LANGUAGE OF A REPO BY THE README<a name="top"></a>
+# PREDICTING PROGRAMMING LANGUAGE BY THE README<a name="top"></a>
 ![]()
 
-by: Dan Churchill
-
-<p>
-  <a href="https://github.com/DanChurchill" target="_blank">
-    <img alt="Dan" src="https://img.shields.io/github/followers/DanChurchill?label=Follow_Dan&style=social" />
-  </a>
-</p>
-
+by: Richard Macken & Dan Churchill
 
 ***
 [[Project Description](#project_description)]
@@ -24,11 +17,11 @@ ___
 
 
 ## <a name="project_description"></a>Project Description and Goals:
-The purpose of this project is to create a Regression Model that predicts property tax assessed values of Single Family Properties that were sold in 2017 from a database of Zillow data  
+The purpose of this project is to build a model that can predict the main programming language of a repository, given the text of the README file.
     
-  Goal 1: Create a model that can predict the tax value better than the baseline rate<br>
-  Goal 2: Find the key drivers of tax value for single family properties<br>
-  Goal 3: Identify where the properties are located
+  Goal 1: Generate a list of repositories programatically using web scraping techniques<br>
+  Goal 2: Acquire and Explore the natural language data that we have acquired<br>
+  Goal 3: Build a function that will take in the text of a README file, and tries to predict the programming language
 
 
 [[Back to top](#top)]
@@ -38,12 +31,11 @@ The purpose of this project is to create a Regression Model that predicts proper
 
 
 ### Project Outline:
-- Acquire, clean, and prepare data from the Codeup Database using a function saved in a wrangle.py file to import into the Final Report Notebook.
-- Perform initial data exploration to determine what features will be usefull for modeling
-- Establish a baseline RMSE
-- Train three different linear regression models and evaluate on train and validate datasets
+- Acquire, clean, and prepare data from the Github Website using their API and a personal access token
+- Split data and perform initial data exploration to determine what features will be usefull for modeling
+- Train multiple classification models and evaluate on train and validate datasets
 - Choose the model with that performs the best and evaluate that single model on the test dataset
-- Document conclusions, takeaways, and next steps in the Final Report Notebook.
+- Implement a function that accepts text from a readme file and tries to predict the programming lanquage
 
 [[Back to top](#top)]
 ***
@@ -52,41 +44,17 @@ The purpose of this project is to create a Regression Model that predicts proper
 
 | Target Attribute | Definition | Data Type |
 | ----- | ----- | ----- |
-| tax_value | the 2017 assessed tax value of the property | float |
+| language | the primary programming language of the repository | string |
 
 
 ---
 | Feature | Definition | Data Type |
 | ----- | ----- | ----- |
-| parcelid | Unique id for each property| int |
-| bathrooms| The number of bathrooms on the property | float |
-| bedrooms | The number of bedrooms on the property | float |
-| county| The County the property is located in | string |
-| fireplacecnt | The number of fireplaces on the property | float|
-| garagecarcnt | The number of cars that can be held in the garage on the property | float |
-| lotsize | the square footage of the land | float |
-| poolcnt | the number of pools on the property | float |
-| lat | The geographical latitude of the property | float |
-| long | The geographical longitude of the property | float |
-| logerror | the logerror of zillows model, retained for possible future use, but not used in this project | float |
-| tract | the census tract of the property, with the FIPS and decimal portions removed | float |
-| Los Angeles | 1 if the property is in LA County | int |
-| Orange | 1 if the property is in Orange County | int |
-| Ventura | 1 if the property is in Ventura County | int |
-| 1.0 | 1 if the property has one bedroom | int |
-| 2.0 | 1 if the property has two bedrooms | int |
-| 3.0 | 1 if the property has three bedrooms | int |
-| 4.0 | 1 if the property has four bedrooms | int |
-| 5.0 | 1 if the property has five bedrooms | int |
-| 6.0 | 1 if the property has six bedrooms | int |
-| 7.0 | 1 if the property has seven bedrooms | int |
-| 8.0 | 1 if the property has eight bedrooms | int |
-| 9.0 | 1 if the property has nine bedrooms | int |
-| 10.0 | 1 if the property has ten bedrooms | int |
-| 11.0 | 1 if the property has eleven bedrooms | int |
-| age | the age of the property in years | float
-| 4plusBath | 1 if the property has more than three bathrooms | int
-| 3to5garage | 1 if the property's garage has the capacity for 3 to 5 cars | int
+| repo | the user id/repo name | string |
+| readme_contents | the text from the readme file of the repo | string |
+| cleaned	 | the text of the readme file after intial cleaning | string |
+| stemmed | the text of the readme file after it has been stemmed | string |
+
 
 [[Back to top](#top)]
 
