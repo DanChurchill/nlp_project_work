@@ -20,7 +20,7 @@ ___
 The purpose of this project is to build a model that can predict the main programming language of a repository, given the text of the README file.
     
   Goal 1: Generate a list of repositories programatically using web scraping techniques<br>
-  Goal 2: Acquire and Explore the natural language data that we have acquired<br>
+  Goal 2: Prepare and Explore the natural language data that we have acquired<br>
   Goal 3: Create three models to predict language of a repo, and select the best model to use against test data
 
 
@@ -54,7 +54,7 @@ The purpose of this project is to build a model that can predict the main progra
 | readme_contents | the text from the readme file of the repo | string |
 | cleaned	 | the text of the readme file after intial cleaning | string |
 | stemmed | the text of the readme file after it has been stemmed | string |
-
+| lemmatized | the text of the readme file after it has been lemmatized | string |
 
 [[Back to top](#top)]
 
@@ -109,28 +109,28 @@ There were similar observations in garage size and a similar category was create
 ## <a name="model"></a>Modeling:
 
 #### Modeling Results
-| Model | RMSE on train | RMSE on validate | R2 score |
-| ---- | ---- | ---- |---- |
-| Baseline | $233,115.06 | N/A | N/A |
-| Linear Regression (OLS) | $198,418.25 | $199,021.70 | 0.2816 |  
-| LassoLars | $198,424.85 | $199,017.21 |  0.2816 |
-| Tweedie Regressor | $198,944.70 | $199,738.47 | 0.2764 |
+| Model | Baseline/Train Accuracy | Validate Accuracy |
+| ---- | ---- | ---- | 
+| Baseline | 33% | N/A |
+| Logistic Regression | 95% | 75% | 
+| Random Forest | 100% | 72% |  
+| K-Nearest Neighbors | 75% | 75% | 
 
  
 
 
-- The LassoLars model performed slightly better than the OLS and Tweedie Regressor models
+- The K-Nearest Neighbors model had the most consistent performance
 
 
 ## Testing the Model
 
-- Tweedie Regressor model used on Test data
+- KNN model used on Test data
 
 #### Testing Dataset
 
-| Model | RMSE on test | R2 score |
-| ---- | ---- | ---- |
-| Tweedie Regressor | $198,604.47 |  0.278 |
+| Model | Accuracy on Test | 
+| ---- | ---- | 
+| K-Nearest Neighbors | 75% |  
 
 [[Back to top](#top)]
 
@@ -138,14 +138,15 @@ There were similar observations in garage size and a similar category was create
 
 ## <a name="conclusion"></a>Conclusion and Next Steps:
 
-- We created a model that was able to predict programming language of a repo with XX% accuracy
+- We created a model that was able to predict programming language of a repo with 75% accuracy
 
-- The model performed significantly better when the dataset was restricted to a more narrow set of data
+- The efforts to thoroughly clean the text leaving only English words paid off in increased model performance
 
-- Location was the largest driver of tax value, followed by square footage
+- "" was the most common word for Java
+- "" was the most common word for Python
+- "" was the most common word for C+
 
-- I attempted to create a function that created a dictionary of models trained for each of the most popular tracts
-    - Consolidating results and evaluating proved too difficult to implement in the time given
+- Given more time we would have further explored N-grams to possibly improve performance
 
 [[Back to top](#top)]
 
