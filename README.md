@@ -3,6 +3,8 @@
 
 by: Richard Macken & Dan Churchill
 
+Slide presentation available [Here](https://www.canva.com/design/DAFPZgy0ed8/-WPkFCgwesKpECyPmPlcMQ/edit?utm_content=DAFPZgy0ed8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ***
 [[Project Description](#project_description)]
 [[Project Planning](#planning)]
