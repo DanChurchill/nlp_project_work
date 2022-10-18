@@ -137,7 +137,7 @@ There were similar observations in garage size and a similar category was create
 
 ## <a name="conclusion"></a>Conclusion and Next Steps:
 
-- We created a tax value predictor that beat the baseline by $35,000
+- We created a model that was able to predict programming language of a repo with XX% accuracy
 
 - The model performed significantly better when the dataset was restricted to a more narrow set of data
 
@@ -152,7 +152,7 @@ There were similar observations in garage size and a similar category was create
 
 ## <a name="reproduce"></a>Steps to Reproduce:
 
-You will need your own env.py file with database credentials then follow the steps below:
+In order to reproduce the project follow the steps below:
 
   - Download the acquire.py, prepare.py, and final_report.ipynb files
   - Generate a personal access token at https://github.com/settings/tokens 
