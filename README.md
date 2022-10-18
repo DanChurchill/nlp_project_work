@@ -62,8 +62,7 @@ The purpose of this project is to build a model that can predict the main progra
 
 ## <a name="wrangle"></a>Data Acquisition and Preparation
 
-Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  The data is then 
-into train and test sets in a 80% / 20% ratio.
+Data is acquired from the Github website using a personal access token to scrape their website via their API.  The modular functions within the acquire.py file obtain the userdata, clean it to remove encoded characters and save that to another column, stem the words to remove suffixes and save it to it's own column, and then creates one last column of lemmatized data.  Prior to exploration the data is split into 60% train, 20% validate, and 20% test before exploration.
 
 
 
@@ -130,9 +129,9 @@ Next TF and IDF were calculated for each word by language, and appended it to th
 
 - The efforts to thoroughly clean the text leaving only English words paid off in increased model performance
 
-- "" was the most common word for Java
-- "" was the most common word for Python
-- "" was the most common word for C+
+- "android" was the most common word for Java
+- "learning" was the most common word for Python
+- "fixed" was the most common word for C+
 
 - Given more time we would have further explored N-grams to possibly improve performance
 
